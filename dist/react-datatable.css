@@ -1,57 +1,5 @@
-/*react-widgets - DropdownList hacks below... -> old chinese patience*/
-.rw-dropdownlist > .rw-input {
-  padding-right: 7px;
-  height: 26px;
-}
-.rw-dropdownlist:active {
-  box-shadow: none;
-}
-.rw-dropdownlist:active .rw-state-focus {
-  box-shadow: none;
-}
-.rw-dropdownlist.rw-state-disabled {
-  cursor: default;
-}
-.rw-widget.rw-state-focus,
-.rw-widget.rw-state-focus:hover {
-  box-shadow: 0 0 6px 0 #009900;
-}
-.rw-widget.rw-state-focus > .rw-select {
-  background: -webkit-linear-gradient(bottom, #f5f5f5 0, #d2d2d2 100%);
-}
-.rw-dropdownlist > .rw-select,
-.rw-dropdownlist > .rw-select.rw-rtl {
-  border-left: 1px solid #d2d2d2;
-  background: -webkit-linear-gradient(top, #f5f5f5 0, #d2d2d2 100%);
-}
-/*react-widgets - List hacks below...*/
-ul.rw-list {
-  padding: 0px;
-}
-ul.rw-list > li.rw-list-option:hover {
-  background-color: #82CC82;
-}
-ul.rw-list > li.rw-list-option.rw-state-selected {
-  background-color: #009900;
-  border: 1px solid transparent;
-}
-ul.rw-list > li.rw-list-option:hover {
-  border: 1px solid transparent;
-}
-ul.rw-list > li.rw-list-option {
-  border: 1px solid transparent;
-  line-height: 26px;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-.rw-popup {
-  padding: 0px;
-}
-.rw-state-disabled {
-  color: #e2e2e2;
-}
 /**
- * FixedDataTable v0.4.0 
+ * FixedDataTable v0.5.0 
  *
  * Copyright (c) 2015, Facebook, Inc.
  * All rights reserved.
@@ -61,177 +9,6 @@ ul.rw-list > li.rw-list-option {
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-/**
- * Copyright (c) 2015, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule fixedDataTable
- *
- */
-
-/**
- * Table.
- */
-.public_fixedDataTable_main {
-  border-color: #d3d3d3;
-}
-
-.public_fixedDataTable_header,
-.public_fixedDataTable_hasBottomBorder {
-  border-color: #d3d3d3;
-}
-
-.public_fixedDataTable_header .public_fixedDataTableCell_main {
-  font-weight: bold;
-}
-
-.public_fixedDataTable_header,
-.public_fixedDataTable_header .public_fixedDataTableCell_main {
-  background-color: #f6f7f8;
-  background-image: -webkit-linear-gradient(#fff, #efefef);
-  background-image: linear-gradient(#fff, #efefef);
-}
-
-.public_fixedDataTable_footer .public_fixedDataTableCell_main {
-  background-color: #f6f7f8;
-  border-color: #d3d3d3;
-}
-
-.public_fixedDataTable_topShadow {
-  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAF0lEQVR4AWPUkNeSBhHCjJoK2twgFisAFagCCp3pJlAAAAAASUVORK5CYII=) repeat-x;
-}
-
-.public_fixedDataTable_bottomShadow {
-  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAHElEQVQI12MwNjZmZdAT1+Nm0JDWEGZQk1GTBgAWkwIeAEp52AAAAABJRU5ErkJggg==) repeat-x;
-}
-
-.public_fixedDataTable_horizontalScrollbar .public_Scrollbar_mainHorizontal {
-  background-color: #fff;
-}
-/**
- * Copyright (c) 2015, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule fixedDataTableCell
- */
-
-/**
- * Table cell.
- */
-.public_fixedDataTableCell_main {
-  background-color: #fff;
-  border-color: #d3d3d3;
-}
-
-.public_fixedDataTableCell_highlighted {
-  background-color: #f4f4f4;
-}
-
-.public_fixedDataTableCell_cellContent {
-  padding: 8px;
-}
-
-.public_fixedDataTableCell_columnResizerKnob {
-  background-color: #0284ff;
-}
-/**
- * Copyright (c) 2015, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule fixedDataTableColumnResizerLine
- *
- */
-
-/**
- * Column resizer line.
- */
-.public_fixedDataTableColumnResizerLine_main {
-  border-color: #0284ff;
-}
-/**
- * Copyright (c) 2015, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule fixedDataTableRow
- */
-
-/**
- * Table row.
- */
-.public_fixedDataTableRow_main {
-  background-color: #fff;
-}
-
-.public_fixedDataTableRow_highlighted,
-.public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {
-  background-color: #f6f7f8;
-}
-
-.public_fixedDataTableRow_fixedColumnsDivider {
-  border-color: #d3d3d3;
-}
-
-.public_fixedDataTableRow_columnsShadow {
-  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQIHWPSkNeSBmJhTQVtbiDNCgASagIIuJX8OgAAAABJRU5ErkJggg==) repeat-y;
-}
-/**
- * Copyright (c) 2015, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule Scrollbar
- *
- */
-
-/**
- * Scrollbars.
- */
-
-/* Touching the scroll-track directly makes the scroll-track bolder */
-.public_Scrollbar_main.public_Scrollbar_mainActive,
-.public_Scrollbar_main:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.public_Scrollbar_main.public_Scrollbar_mainActive,
-.public_Scrollbar_main:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.public_Scrollbar_mainOpaque,
-.public_Scrollbar_mainOpaque.public_Scrollbar_mainActive,
-.public_Scrollbar_mainOpaque:hover {
-  background-color: #fff;
-}
-
-.public_Scrollbar_face:after {
-  background-color: #c2c2c2;
-}
-
-.public_Scrollbar_main:hover .public_Scrollbar_face:after,
-.public_Scrollbar_mainActive .public_Scrollbar_face:after,
-.public_Scrollbar_faceActive:after {
-  background-color: #7d7d7d;
-}
 /**
  * Copyright (c) 2015, Facebook, Inc.
  * All rights reserved.
@@ -564,6 +341,177 @@ body[dir="rtl"] .fixedDataTableColumnResizerLineLayout_main {
   right: 4px;
   top: 0;
 }
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTable
+ *
+ */
+
+/**
+ * Table.
+ */
+.public_fixedDataTable_main {
+  border-color: #d3d3d3;
+}
+
+.public_fixedDataTable_header,
+.public_fixedDataTable_hasBottomBorder {
+  border-color: #d3d3d3;
+}
+
+.public_fixedDataTable_header .public_fixedDataTableCell_main {
+  font-weight: bold;
+}
+
+.public_fixedDataTable_header,
+.public_fixedDataTable_header .public_fixedDataTableCell_main {
+  background-color: #f6f7f8;
+  background-image: -webkit-linear-gradient(#fff, #efefef);
+  background-image: linear-gradient(#fff, #efefef);
+}
+
+.public_fixedDataTable_footer .public_fixedDataTableCell_main {
+  background-color: #f6f7f8;
+  border-color: #d3d3d3;
+}
+
+.public_fixedDataTable_topShadow {
+  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAF0lEQVR4AWPUkNeSBhHCjJoK2twgFisAFagCCp3pJlAAAAAASUVORK5CYII=) repeat-x;
+}
+
+.public_fixedDataTable_bottomShadow {
+  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAHElEQVQI12MwNjZmZdAT1+Nm0JDWEGZQk1GTBgAWkwIeAEp52AAAAABJRU5ErkJggg==) repeat-x;
+}
+
+.public_fixedDataTable_horizontalScrollbar .public_Scrollbar_mainHorizontal {
+  background-color: #fff;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableCell
+ */
+
+/**
+ * Table cell.
+ */
+.public_fixedDataTableCell_main {
+  background-color: #fff;
+  border-color: #d3d3d3;
+}
+
+.public_fixedDataTableCell_highlighted {
+  background-color: #f4f4f4;
+}
+
+.public_fixedDataTableCell_cellContent {
+  padding: 8px;
+}
+
+.public_fixedDataTableCell_columnResizerKnob {
+  background-color: #0284ff;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableColumnResizerLine
+ *
+ */
+
+/**
+ * Column resizer line.
+ */
+.public_fixedDataTableColumnResizerLine_main {
+  border-color: #0284ff;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableRow
+ */
+
+/**
+ * Table row.
+ */
+.public_fixedDataTableRow_main {
+  background-color: #fff;
+}
+
+.public_fixedDataTableRow_highlighted,
+.public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {
+  background-color: #f6f7f8;
+}
+
+.public_fixedDataTableRow_fixedColumnsDivider {
+  border-color: #d3d3d3;
+}
+
+.public_fixedDataTableRow_columnsShadow {
+  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQIHWPSkNeSBmJhTQVtbiDNCgASagIIuJX8OgAAAABJRU5ErkJggg==) repeat-y;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule Scrollbar
+ *
+ */
+
+/**
+ * Scrollbars.
+ */
+
+/* Touching the scroll-track directly makes the scroll-track bolder */
+.public_Scrollbar_main.public_Scrollbar_mainActive,
+.public_Scrollbar_main:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.public_Scrollbar_main.public_Scrollbar_mainActive,
+.public_Scrollbar_main:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.public_Scrollbar_mainOpaque,
+.public_Scrollbar_mainOpaque.public_Scrollbar_mainActive,
+.public_Scrollbar_mainOpaque:hover {
+  background-color: #fff;
+}
+
+.public_Scrollbar_face:after {
+  background-color: #c2c2c2;
+}
+
+.public_Scrollbar_main:hover .public_Scrollbar_face:after,
+.public_Scrollbar_mainActive .public_Scrollbar_face:after,
+.public_Scrollbar_faceActive:after {
+  background-color: #7d7d7d;
+}
 /*FixedDataTable hacks below...*/
 .public_fixedDataTableCell_cellContent {
   padding: 7px 14px 7px 14px;
@@ -578,13 +526,13 @@ body[dir="rtl"] .fixedDataTableColumnResizerLineLayout_main {
 .public_fixedDataTableCell_cellContent_sortable:hover {
   border-color: #006600;
   border-bottom-color: #333300;
-  background: linear-gradient(#82cc82, #009900);
+  background: linear-gradient(#82CC82, #009900);
 }
 .public_fixedDataTable_header {
   color: #555555;
 }
 .public_fixedDataTableRow_main.public_fixedDataTable_header .public_fixedDataTableCell_main {
-  background: linear-gradient(#009900, #82cc82);
+  background: linear-gradient(#009900, #82CC82);
   color: #e2e2e2;
 }
 .public_fixedDataTableRow_main.public_fixedDataTable_header .public_fixedDataTableCell_main .ico-sort-asc {

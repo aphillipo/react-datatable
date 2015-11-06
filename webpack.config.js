@@ -43,7 +43,7 @@ var config = {
 		}]
 	},
 	plugins: [
-		new ExtractTextPlugin("react-ui-components.css")
+		new ExtractTextPlugin("react-datatable.css")
 	]
 };
 

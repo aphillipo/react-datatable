@@ -11,7 +11,7 @@ import DataTableActionCreators from './actions/datatable-action-creators';
 import DataTableConstants from './constants/datatable-constants';
 import Helpers from './utils/helpers';
 
-import './../less/datatable.less';
+import '../less/datatable.less';
 
 var Table = FixedDataTable.Table;
 var Column = FixedDataTable.Column;
@@ -168,7 +168,15 @@ var RUCDataTable = React.createClass({
 			return this.props.getAvailableWidth();
 		}
 
-		return (window.offsetWidth - this.props.externalFixedContentSize - (this.props.isSelectable ? this.props.selectableColumn.width : 0));
+		var w = window,
+			d = document,
+			e = d.documentElement,
+			g = d.getElementsByTagName('body')[0],
+			win_width = w.innerWidth || e.clientWidth || g.clientWidth,
+			win_height = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+
+		return (win_width - this.props.externalFixedContentSize - (this.props.isSelectable ? this.props.selectableColumn.width : 0));
 	},
 
 	/*
@@ -223,7 +231,7 @@ var RUCDataTable = React.createClass({
 
 		if(DataTableStore.getNoData()) {
 			return (
-				<div className="empty-data-table-message">{DataTableConstants.ComponentTypes.EMPTY_MESSAGE}</div>
+				<div className="empty-data-table-message alert alert-danger">{DataTableConstants.ComponentTypes.EMPTY_MESSAGE}</div>
 			);
 		}
 	},

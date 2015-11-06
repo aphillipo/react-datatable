@@ -157,7 +157,7 @@ var DataTableStore = _.extend({}, EventEmitter.prototype, {
 		var selectedRows = [];
 
 		_.each(_data, function(item) {
-			if(item.selected === true) {
+			if(item && 'selected' in item && item.selected === true) {
 				selectedRows.push(item);
 			}
 		});
