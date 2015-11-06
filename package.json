@@ -1,7 +1,8 @@
 {
-	"name": "ReactUIComponents",
-	"version": "0.0.0",
-	"description": "A set of React extended UI components based on Facebook's FixedDataTable and ReactWidgets open-source libraries",
+	"name": "react-datatable",
+	"version": "1.0.0",
+	"description": "My form of the awesome work done by @cosminnicula on Github.",
+  	"main": "src/main.jsx",
 	"scripts": {
 		"build": "webpack",
 		"examples": "webpack-dev-server --config examples/webpack.config.js --inline --port 8118",
@@ -9,11 +10,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/cosminnicula/react-ui-components"
+		"url": "https://github.com/aphillipo/react-datatable"
 	},
 	"dependencies": {
 		"react": "0.13.1",
-		"jquery": "2.1.4",
 		"underscore": "1.8.3",
 		"console-polyfill": "0.2.1",
 		"globalize": "0.1.1",

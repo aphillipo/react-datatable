@@ -3,8 +3,8 @@
 import EventEmitter from 'events';
 import _ from 'underscore';
 
-import DataTableDispatcher from './../dispatcher/data-table-dispatcher';
-import DataTableConstants from './../constants/data-table-constants';
+import DataTableDispatcher from './../dispatcher/datatable-dispatcher';
+import DataTableConstants from './../constants/datatable-constants';
 
 var ActionTypes = DataTableConstants.ActionTypes,
 	_queue = [],
@@ -119,6 +119,16 @@ var DataTableStore = _.extend({}, EventEmitter.prototype, {
 		_onGetRows = onGetRows;
 		_pageSize = pageSize;
 		_filters = _sanitizeFilters(filters);
+
+		if (!_data[rowIndex]) {
+			_queueRequestFor(rowIndex);
+			_data[rowIndex] = DataTableConstants.ComponentTypes.DUMMY_ROW_DATA;
+		}
+
+		return _data[rowIndex];
+	},
+
+	getOneRowData: function(rowIndex) {
 
 		if (!_data[rowIndex]) {
 			_queueRequestFor(rowIndex);

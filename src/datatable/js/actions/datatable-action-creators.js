@@ -1,7 +1,7 @@
 'use strict';
 
-import DataTableDispatcher from './../dispatcher/data-table-dispatcher';
-import DataTableConstants from './../constants/data-table-constants';
+import DataTableDispatcher from './../dispatcher/datatable-dispatcher';
+import DataTableConstants from './../constants/datatable-constants';
 
 var ActionTypes = DataTableConstants.ActionTypes;
 

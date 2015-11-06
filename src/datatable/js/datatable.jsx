@@ -2,16 +2,16 @@
 
 import FixedDataTable from 'fixed-data-table';
 import 'fixed-data-table/dist/fixed-data-table.css';
-import $ from 'jquery';
+
 import _ from 'underscore';
 import React from 'react';
 
-import DataTableStore from './stores/data-table-store';
-import DataTableActionCreators from './actions/data-table-action-creators';
-import DataTableConstants from './constants/data-table-constants';
+import DataTableStore from './stores/datatable-store';
+import DataTableActionCreators from './actions/datatable-action-creators';
+import DataTableConstants from './constants/datatable-constants';
 import Helpers from './utils/helpers';
 
-import './../less/data-table.less';
+import './../less/datatable.less';
 
 var Table = FixedDataTable.Table;
 var Column = FixedDataTable.Column;
@@ -45,7 +45,8 @@ var RUCDataTable = React.createClass({
 		onGetRows: React.PropTypes.func.isRequired,
 		pageSize: React.PropTypes.number.isRequired,
 		filters: React.PropTypes.arrayOf(React.PropTypes.object),
-		onLoading: React.PropTypes.func
+		onLoading: React.PropTypes.func,
+		onRowClick: React.PropTypes.func
 	},
 
 	/*
@@ -54,6 +55,11 @@ var RUCDataTable = React.createClass({
 	getAllSelectedRows () {
 
 		return DataTableStore.getAllSelectedRows().slice(); //new array object
+	},
+
+	getRowIdByIndex: function getRowIdByIndex(index) {
+
+		return DataTableStore.getOneRowData(index);
 	},
 
 	refresh () {
@@ -76,7 +82,8 @@ var RUCDataTable = React.createClass({
 			},
 			autoWidth: false,
 			externalFixedContentSize: DataTableConstants.ComponentTypes.EXTERNAL_FIXED_CONTENT_SIZE,
-			filters: []
+			filters: [],
+			onRowClick: function() {}
 		}
 	},
 
@@ -86,7 +93,7 @@ var RUCDataTable = React.createClass({
 
 		return _.extend(stateFromStores, {
 			availableWidth: this._getAvailableWidth(),
-			columns: this._getNormalizeColumns(this.props.fdtColumns)
+			columns: this._getNormalizeColumns(this.props.fdtColumns.slice())
 		});
 	},
 
@@ -99,6 +106,11 @@ var RUCDataTable = React.createClass({
 			this._setupAutoWidthBehavior(props.autoWidth);
 		}
 
+		if (this.props.externalFixedContentSize != props.externalFixedContentSize) {
+			console.log(props.externalFixedContentSize);
+			this.setState({externalFixedContentSize: props.externalFixedContentSize});
+		}
+
 		if (!Helpers.filterArraysAreSame(this.props.filters, props.filters)) {
 			DataTableActionCreators.filterBy(props.filters);
 		}
@@ -107,6 +119,8 @@ var RUCDataTable = React.createClass({
 	componentDidMount() {
 
 		this._setupAutoWidthBehavior(this.props.autoWidth);
+
+		this._updateColumnWidths();
 
 		DataTableStore.addChangeListener(this._onChange);
 	},
@@ -150,8 +164,11 @@ var RUCDataTable = React.createClass({
 	},
 
 	_getAvailableWidth () {
+		if (this.props.getAvailableWidth) {
+			return this.props.getAvailableWidth();
+		}
 
-		return ($(window).width() - this.props.externalFixedContentSize - (this.props.isSelectable ? this.props.selectableColumn.width : 0));
+		return (window.offsetWidth - this.props.externalFixedContentSize - (this.props.isSelectable ? this.props.selectableColumn.width : 0));
 	},
 
 	/*
@@ -162,13 +179,20 @@ var RUCDataTable = React.createClass({
 
 		var normalizedColumns = [],
 			availableWidth = this._getAvailableWidth(),
-			totalAvailableWidthPercentage = 0;
+			totalAvailableWidthPercentage = 0,
+			totalColumnsWidth = 0;
+
+		columns.forEach(function (column) {
+			totalColumnsWidth += column.width;
+		});
 
 		columns.forEach(function (column) {
 
 			if(_.isNumber(column.width)) {
 				column.autoWidth = false;
-				column.availableWidthPercentage = column.width / availableWidth;
+				column.availableWidthPercentage = column.width / totalColumnsWidth;
+				column.width = availableWidth * column.availableWidthPercentage;
+
 				totalAvailableWidthPercentage += column.availableWidthPercentage;
 			} else {
 				column.autoWidth = true;
@@ -308,18 +332,19 @@ var RUCDataTable = React.createClass({
 
 	_onRowClick (e, index) {
 
+		this.props.onRowClick(e, index);
 		DataTableActionCreators.toggleSelected(index);
 	},
 
 	_setupAutoWidthBehavior (isAutoWidth) {
 
 		if(isAutoWidth) {
-			$(window).off('resize', this._onResize);
-			$(window).on('resize', this._onResize);
+			window.removeEventListener('resize', this._onResize);
+			window.addEventListener('resize', this._onResize);
 
 			this._updateColumnWidths();
 		} else {
-			$(window).off('resize', this._onResize);
+			window.removeEventListener('resize', this._onResize);
 		}
 	},
 

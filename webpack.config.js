@@ -8,7 +8,7 @@ var config = {
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'react-ui-components.js',
+		filename: 'react-datatable.js',
 		library: 'RUC',
 		libraryTarget: 'umd'
 	},
