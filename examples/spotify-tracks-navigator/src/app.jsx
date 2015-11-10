@@ -4,7 +4,6 @@ import 'console-polyfill';
 import React from 'react';
 
 import DataTableSection from './components/data-table-section.jsx';
-import FilterBarSection from './components/filter-bar-section.jsx';
 
 var App = React.createClass({
 
@@ -26,7 +25,6 @@ var App = React.createClass({
 						</div>
 					</div>
 					<div className="action-bar">
-						<FilterBarSection />
 					</div>
 					<DataTableSection />
 				</div>

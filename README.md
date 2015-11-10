@@ -1,6 +1,6 @@
 ### React UI Components
 
-A set of React extended UI components based on Facebook's FixedDataTable and ReactWidgets open-source libraries
+A set of React Datatable base on Facebook's FixedDataTable
 
 ### Screenshot
 
@@ -11,8 +11,7 @@ A set of React extended UI components based on Facebook's FixedDataTable and Rea
 * lazy loading
 * multiple selection
 * async column sorting
-* auto width
-* percentage column widths
+* proportional width
 * async filtering
 * loading progress
 * no data custom message

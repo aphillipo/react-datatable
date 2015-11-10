@@ -107,7 +107,6 @@ var RUCDataTable = React.createClass({
 		}
 
 		if (this.props.externalFixedContentSize != props.externalFixedContentSize) {
-			console.log(props.externalFixedContentSize);
 			this.setState({externalFixedContentSize: props.externalFixedContentSize});
 		}
 
@@ -156,6 +155,7 @@ var RUCDataTable = React.createClass({
 					headerDataGetter={this._headerDataGetter}
 					width={width}
 					rowGetter={this._rowGetter}>
+
 					{this._renderColumns()}
 				</Table>
 				{this._renderNoData()}
