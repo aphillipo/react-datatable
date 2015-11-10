@@ -2,10 +2,6 @@
 
 A set of React Datatable base on Facebook's FixedDataTable
 
-### Screenshot
-
-![React UI Components](screenshot.jpg)
-
 ### Extended FixedDataTable features
 
 * lazy loading
