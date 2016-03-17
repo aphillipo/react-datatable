@@ -25,8 +25,10 @@ var _getFiltersQuery = function (filters) {
 module.exports = {
 
 	getTracks: function (rowStart, rowEnd, pageSize, sortColumn, sortOrder, filters, onLoad) {
-
+		
+		filters = [{value:'boney m'}]
 		if(filters.length > 0) {
+			console.log('hi')
 			var page = "?offset=" + rowStart;
 			var size = "&limit=" + pageSize;
 			var type = "&type=track";
@@ -60,6 +62,9 @@ module.exports = {
 					} else {
 						onLoad([], 0);
 					}
+				}, 
+				error: function(er) {
+					console.log(er)
 				}
 			});
 		} else {

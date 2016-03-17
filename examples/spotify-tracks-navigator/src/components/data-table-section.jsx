@@ -3,7 +3,7 @@
 import React from 'react';
 import _ from 'underscore';
 
-import RUCDataTable from 'ruc/data-table/js/data-table.jsx';
+import RUCDataTable from 'ruc/datatable/js/datatable.jsx';
 import WebAPIUtils from './../utils/web-api-utils';
 import TrackStore from './../stores/track-store';
 import Constants from './../constants/constants';
@@ -36,7 +36,8 @@ var DataTableSection = React.createClass({
 				width: 360
 			}, {
 				label: "ALBUM",
-				name: "album"
+				name: "album",
+				width: 200
 			}],
 			externalFixedContentSize: 28,
 			autoWidth: true,
