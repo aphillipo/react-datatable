@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-	DataTable: require('./DataTable/js/datatable.jsx')
+	DataTable: require('./datatable/js/datatable.jsx')
 };
