@@ -147,6 +147,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			return _storesDatatableStore2['default'].getAllSelectedRows().slice(); //new array object
 		},
 
+		getSelectedById: function getSelectedById() {
+			return _storesDatatableStore2['default'].getSelectedById(); //new array object
+		},
+
 		getRowIdByIndex: function getRowIdByIndex(index) {
 
 			return _storesDatatableStore2['default'].getOneRowData(index);
@@ -197,7 +201,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 
 			if (this.props.externalFixedContentSize != props.externalFixedContentSize) {
-				console.log(props.externalFixedContentSize);
 				this.setState({ externalFixedContentSize: props.externalFixedContentSize });
 			}
 
@@ -2075,6 +2078,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var ActionTypes = _constantsDatatableConstants2['default'].ActionTypes,
 	    _queue = [],
 	    _data = [],
+	    _selected_by_id = {},
 	    _sortBy = '',
 	    _sortDir = _constantsDatatableConstants2['default'].SortTypes.ASC,
 	    _filters = [],
@@ -2210,6 +2214,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			return _isSelectAllChecked;
 		},
 
+		// this function is stupid and inefficient
 		getAllSelectedRows: function getAllSelectedRows() {
 
 			if (_data.length === 0) {
@@ -2225,6 +2230,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			});
 
 			return selectedRows;
+		},
+
+		getSelectedById: function getSelectedById() {
+			return _selected_by_id;
 		},
 
 		getIsEmpty: function getIsEmpty() {
@@ -2278,6 +2287,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				    uncheckedItem;
 
 				_data[action.index] = _underscore2['default'].extend({}, _data[action.index], { selected: selected });
+
+				if ('id' in _data[action.index]) {
+					if (selected) {
+						_selected_by_id[_data[action.index].id] = true;
+					} else {
+						delete _selected_by_id[_data[action.index].id];
+					}
+				}
 
 				if (!selected) {
 					_isSelectAllChecked = false;
@@ -2402,8 +2419,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      er = arguments[1];
 	      if (er instanceof Error) {
 	        throw er; // Unhandled 'error' event
+	      } else {
+	        // At least give some kind of context to the user
+	        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
+	        err.context = er;
+	        throw err;
 	      }
-	      throw TypeError('Uncaught, unspecified "error" event.');
 	    }
 	  }
 

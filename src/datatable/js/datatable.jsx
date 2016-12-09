@@ -57,6 +57,10 @@ var RUCDataTable = React.createClass({
 		return DataTableStore.getAllSelectedRows().slice(); //new array object
 	},
 
+	getSelectedById () {
+		return DataTableStore.getSelectedById(); //new array object
+	},
+
 	getRowIdByIndex: function getRowIdByIndex(index) {
 
 		return DataTableStore.getOneRowData(index);

@@ -9,6 +9,7 @@ import DataTableConstants from './../constants/datatable-constants';
 var ActionTypes = DataTableConstants.ActionTypes,
 	_queue = [],
 	_data = [],
+	_selected_by_id = {},
 	_sortBy = '',
 	_sortDir = DataTableConstants.SortTypes.ASC,
 	_filters = [],
@@ -148,6 +149,7 @@ var DataTableStore = _.extend({}, EventEmitter.prototype, {
 		return _isSelectAllChecked;
 	},
 
+	// this function is stupid and inefficient
 	getAllSelectedRows: function () {
 
 		if(_data.length === 0) {
@@ -163,6 +165,10 @@ var DataTableStore = _.extend({}, EventEmitter.prototype, {
 		});
 
 		return selectedRows;
+	},
+
+	getSelectedById: function() {
+		return _selected_by_id;
 	},
 
 	getIsEmpty: function () {
@@ -216,6 +222,14 @@ DataTableStore.dispatchToken = DataTableDispatcher.register(function(action) {
 				uncheckedItem;
 
 			_data[action.index] = _.extend({}, _data[action.index], {selected: selected});
+
+			if ('id' in _data[action.index]) {
+				if (selected) {			
+					_selected_by_id[_data[action.index].id] = true;
+				} else {
+					delete _selected_by_id[_data[action.index].id];
+				}
+			}
 
 			if(!selected) {
 				_isSelectAllChecked = false;
